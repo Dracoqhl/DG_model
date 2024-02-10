@@ -1,0 +1,30 @@
+import argparse
+
+def get_parser():#参数设置
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--epoch', type=int, default=450)
+    parser.add_argument('--lr', type=float, default=0.01)  
+    parser.add_argument('--weight_decay', type=float, default=0.0005)
+    parser.add_argument('--num_workers', default=0, type=int)
+    parser.add_argument('--batchsize', type=int, default=48)
+    parser.add_argument('--seed', type=int, default=0)
+    parser.add_argument('--model', type=int, default=18)
+    parser.add_argument('--train', type=bool, default=True)
+    parser.add_argument('--begin_epoch', type=int, default=0)
+    parser.add_argument('--isLoad', type=bool, default=False)
+
+    parser.add_argument("--domain_discriminator_flag", default=1, type=int, help="whether use domain discriminator.")
+    parser.add_argument("--grl", default=1, type=int, help="whether to use grl")
+    parser.add_argument("--lambd", default=0.25, type=float, help="weight of grl")
+    parser.add_argument("--drop_percent", default=0.33,  type=float, help="percent of dropped filters")
+    parser.add_argument("--filter_WRS_flag", default=1, type=int, help="Weighted Random Selection.")
+    parser.add_argument("--recover_flag", default=1, type=int)
+    parser.add_argument("--layer_wise_prob", default=0.8, type=float, help="prob to use layer-wise dropout")
+
+    parser.add_argument("--KL_Loss", default=1, type=int, help="whether to use consistency of dropout")
+    parser.add_argument("--KL_Loss_weight", default=1.5, type=float, help="weight of KL_Loss")
+    parser.add_argument("--KL_Loss_T", default=5, type=float, help="T of KL_Loss")
+    # parser.add_argument("--domain_discriminator_flag", default=1, type=int, help="whether use domain discriminator.")
+    parser.add_argument("--domain_loss_flag", default=1, type=int, help="whether use domain loss.")
+    parser.add_argument("--discriminator_layers", default=[1, 2, 3, 4], nargs="+", type=int, help="where to place discriminators")
+    return parser.parse_args()

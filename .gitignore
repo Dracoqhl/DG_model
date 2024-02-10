@@ -1,0 +1,6 @@
+#created by http://www.gitignore.io
+### data ###
+PACS/
+
+### checkpoints ###
+Checkpoints
